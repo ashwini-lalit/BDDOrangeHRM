@@ -4,6 +4,11 @@ import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
+/**
+ * The TestRunner class is used to configure and run Cucumber tests.
+ * It specifies the location of feature files, step definitions, and various
+ * reporting options.
+ */
 @RunWith(Cucumber.class)
 @CucumberOptions(
     features = "src/test/resources/features",

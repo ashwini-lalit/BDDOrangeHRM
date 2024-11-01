@@ -9,6 +9,10 @@ import java.io.FileInputStream;
 import java.util.Properties;
 import java.time.Duration;
 
+/**
+ * The WebDriverFactory class is responsible for creating WebDriver instances
+ * based on the configuration specified in the properties file.
+ */
 public class WebDriverFactory {
     private static Properties config;
 
@@ -21,7 +25,12 @@ public class WebDriverFactory {
             e.printStackTrace();
         }
     }
-
+    /**
+     * Creates a WebDriver instance based on the browser type specified in the configuration.
+     *
+     * @return the WebDriver instance
+     * @throws IllegalArgumentException if the browser type is not supported
+     */
     public static WebDriver createDriver() {
         WebDriver driver;
         String browser = config.getProperty("browser");
