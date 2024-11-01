@@ -42,29 +42,95 @@ public class EmployeePage {
                 By.xpath(properties.getProperty("add.employee.button")))).click();
     }
 
-    public void enterEmployeeDetails(String firstName, String middleName, String lastName) {
-        wait.until(ExpectedConditions.presenceOfElementLocated(
+    public void setFirstName(String firstName) {
+        wait.until(ExpectedConditions.elementToBeClickable(
                 By.xpath(properties.getProperty("firstname.input")))).sendKeys(firstName);
-        driver.findElement(By.xpath(properties.getProperty("middlename.input"))).sendKeys(middleName);
-        driver.findElement(By.xpath(properties.getProperty("lastname.input"))).sendKeys(lastName);
     }
 
-    public void createLoginDetails(String username, String password) {
-        WebElement element = driver.findElement(By.xpath(properties.getProperty("toggle.login.details")));
-        JavascriptExecutor executor = (JavascriptExecutor) driver;
-        executor.executeScript("arguments[0].click();", element);
-
-        wait.until(ExpectedConditions.presenceOfElementLocated(
-                By.xpath(properties.getProperty("username.input")))).sendKeys(username);
-        driver.findElement(By.xpath(properties.getProperty("password.input"))).sendKeys(password);
-        driver.findElement(By.xpath(properties.getProperty("confirm.password.input"))).sendKeys(password);
+    public void setMiddleName(String middleName) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("middlename.input")))).sendKeys(middleName);
     }
 
-    public void saveEmployee() {
-//        wait.until(ExpectedConditions.elementToBeClickable(
-//                By.xpath(properties.getProperty("save.button")))).click();
+    public void setLastName(String lastName) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("lastname.input")))).sendKeys(lastName);
+    }
 
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+    public void setEmployeeID(String employeeID) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("employeeID.input")))).sendKeys(employeeID);
+    }
+
+    public void enableLoginDetails() {
+        WebElement radioButton = wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("toggle.login.details"))));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].click();", radioButton);
+    }
+
+    public void setUsername(String username) {
+        WebElement usernameField = driver.findElement(By.xpath(properties.getProperty("username.input")));
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].value='"+username+"';",usernameField);
+
+    }
+
+    public void setPassword(String password) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("password.input")))).sendKeys(password);
+    }
+
+    public void setConfirmPassword(String password) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("confirm.password.input")))).sendKeys(password);
+    }
+
+    public void setLicenseNumber(String licenseNumber) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("licenseNumber.input")))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("licenseNumber.input")))).sendKeys(licenseNumber);
+    }
+
+    public void setLicenseExpiryDate(String expiryDate) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("licenseExpiryDate.input")))).sendKeys(expiryDate);
+    }
+
+    public void setDateOfBirth(String dob) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("dob.input")))).sendKeys(dob);
+    }
+
+    public void selectNationality(String nationality) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("nationality.dropdown")))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@role='option'][contains(.,'"+nationality+"')]"))).click();
+    }
+
+    public void selectMaritalStatus(String status) {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("maritalStatus.dropdown")))).click();
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath("//div[@role='option' and contains(.,'"+status+"')]"))).click();
+
+    }
+
+    public void selectMaleGender() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("gender.male.radio")))).click();
+    }
+
+    public void selectFemaleGender() {
+        wait.until(ExpectedConditions.elementToBeClickable(
+                By.xpath(properties.getProperty("gender.female.radio")))).click();
+    }
+
+    public void clickSave() {
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
 
 // Wait for loader to appear (optional, but sometimes helps)
         wait.until(ExpectedConditions.presenceOfElementLocated(By.className("oxd-form-loader")));
@@ -79,23 +145,37 @@ public class EmployeePage {
 // Use JavaScript click for added reliability
         JavascriptExecutor executor = (JavascriptExecutor) driver;
         executor.executeScript("arguments[0].click();", button);
-
+        System.out.println("Save button clicked");
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(properties.getProperty("save.button")))).click();
     }
 
-    public void enterPersonalDetails(String nationality, String maritalStatus, String dob) {
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath(properties.getProperty("nationality.dropdown")))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//div[@role='option'] and text()='" + nationality + "']"))).click();
+    public void addEmployeeBasicDetails(String firstName, String middleName, String lastName, String employeeID) {
+        setFirstName(firstName);
+        setMiddleName(middleName);
+        setLastName(lastName);
+      //  setEmployeeID(employeeID);
+        clickSave();
+    }
 
-        driver.findElement(By.xpath(properties.getProperty("marital.status.dropdown"))).click();
-        wait.until(ExpectedConditions.elementToBeClickable(
-                By.xpath("//div[@role='option'] and text()='" + maritalStatus + "']"))).click();
+    public void addEmployeeWithLoginDetails(String username, String password) {
+        enableLoginDetails();
+        setUsername(username);
+        setPassword(password);
+        setConfirmPassword(password);
+        clickSave();
+    }
 
-        driver.findElement(By.xpath(properties.getProperty("dob.input"))).sendKeys(dob);
-        driver.findElement(By.xpath(properties.getProperty("gender.male.radio"))).click();
-
-        driver.findElement(By.xpath(properties.getProperty("save.personal.details"))).click();
+    public void addEmployeeAdditionalDetails(String licenseNumber, String expiryDate, String dob, String nationality, String maritalStatus,String gender) {
+        setLicenseNumber(licenseNumber);
+        setLicenseExpiryDate(expiryDate);
+        setDateOfBirth(dob);
+        selectNationality(nationality);
+        selectMaritalStatus(maritalStatus);
+        if (gender == "male")
+            selectMaleGender();
+        else
+            selectFemaleGender();
+        clickSave();
     }
 
     public void searchEmployee(String employeeName) {
@@ -106,8 +186,8 @@ public class EmployeePage {
 
     public boolean isEmployeeDisplayed(String fullName) {
         try {
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath(properties.getProperty("employee.list.name"))));
+            String xpathExpression = properties.getProperty("employee.list.name") + "'" + fullName+"']";
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpathExpression)));
             return true;
         } catch (Exception e) {
             return false;

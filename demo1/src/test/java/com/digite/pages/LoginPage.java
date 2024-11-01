@@ -35,22 +35,15 @@ public class LoginPage {
         WebElement usernameInput = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath(properties.getProperty("login.username.input"))));
         usernameInput.sendKeys(username);
-        //print the username to console
-        System.out.println("Username------------------->: " + username);
-
     }
 
     public void enterPassword(String password) {
         WebElement passwordInput = wait.until(ExpectedConditions.presenceOfElementLocated(
                 By.xpath(properties.getProperty("login.password.input"))));
         passwordInput.sendKeys(password);
-        //print the password to console
-        System.out.println("Password------------------->: " + password);
     }
 
     public void clickSubmit() {
-        //print the submit button to console
-        System.out.println("Submit Button------------------->: ");
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(properties.getProperty("login.submit.button"))));
         wait.until(ExpectedConditions.visibilityOf(driver.findElement(By.xpath(properties.getProperty("login.submit.button")))));
         WebElement submitButton = wait.until(ExpectedConditions.elementToBeClickable(By.xpath(properties.getProperty("login.submit.button"))));
@@ -63,11 +56,7 @@ public class LoginPage {
 
     public boolean isDashboardVisible() {
         try {
-            //print the dashboard header to console
-            System.out.println("Dashboard Header------------------->: ");
-
-            wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath(properties.getProperty("login.dashboard.header"))));
+            wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(properties.getProperty("login.dashboard.header"))));
             return true;
         } catch (Exception e) {
             return false;

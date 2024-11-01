@@ -8,7 +8,7 @@ import org.junit.runner.RunWith;
 @CucumberOptions(
     features = "src/test/resources/features",
     glue = "com.digite.stepdefinitions",  // This is important - points to package with step definitions
-    tags = "@employee",
+    tags = "@Login",
     plugin = {
                 "pretty",
                 "html:target/cucumber-reports/cucumber-pretty.html",

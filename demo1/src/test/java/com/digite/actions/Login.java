@@ -17,4 +17,8 @@ public class Login {
         loginPage.clickSubmit();
         return loginPage.isDashboardVisible();
     }
+
+    public boolean successfulLogin() {
+        return loginPage.isDashboardVisible();
+    }
 }

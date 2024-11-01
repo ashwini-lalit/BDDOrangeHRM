@@ -31,7 +31,7 @@ public class WebDriverFactory {
 
         switch (browser.toLowerCase()) {
             case "chrome":
-                System.setProperty("webdriver.chrome.driver", "E:\\Dell_Demo\\demo1\\src\\test\\resources\\drivers\\chromedriver.exe");
+//                System.setProperty("webdriver.chrome.driver", "E:\\Dell_Demo\\demo1\\src\\test\\resources\\drivers\\chromedriver.exe");
                 ChromeOptions chromeOptions = new ChromeOptions();
                 if (headless) {
                     chromeOptions.addArguments("--headless");
@@ -43,7 +43,6 @@ public class WebDriverFactory {
                 break;
 
             case "firefox":
-                //System.setProperty("webdriver.gecko.driver", "E:\\Dell_Demo\\demo1\\src\\test\\resources\\drivers\\geckodriver.exe");
                 FirefoxOptions firefoxOptions = new FirefoxOptions();
                 if (headless) {
                     firefoxOptions.addArguments("--headless");
