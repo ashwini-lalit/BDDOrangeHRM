@@ -43,7 +43,8 @@ public class SearchPizzaSteps {
 
     @When("Jane searches {string}")
     public void jane_searches(String searchText) {
-        if (searchText.equals("small")) {
+
+        if (searchText.equalsIgnoreCase("small") || searchText.equalsIgnoreCase("medium") || searchText.equalsIgnoreCase("large")) {
             searchResult = pizzaCatalogue.searchPizzaBySize(searchText);
         } else if (searchText.startsWith("$")) {
             searchResult = pizzaCatalogue.searchPizzaByPrice(searchText);
