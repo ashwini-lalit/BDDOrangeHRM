@@ -1,0 +1,20 @@
+#MISSION
+Generate rules and concrete examples with sample data to elaborate given userstory using example mapping process.
+User story description "In order to fix an incorrect delivery address, As a client I want to change the delivery address after the order has been placed“
+
+#INPUT
+This is a Pizza Delivery Web Application
+User has already placed an order
+Wishes to change the delivery address
+
+#STEPS
+elaborate rules
+for each rule consider examples with data samples
+cover ideal, exceptional, alternative flows
+
+#RESPONSE FORMAT
+Create a tree structure with each node as a sticky
+Userstory is in the center
+Rules are user story's children explaining with each rule explaining one constraint
+Examples are children of each rule with concrete data samples
+Export it as mermaid chart

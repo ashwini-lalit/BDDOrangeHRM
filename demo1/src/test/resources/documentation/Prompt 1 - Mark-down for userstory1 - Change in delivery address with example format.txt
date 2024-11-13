@@ -1,0 +1,25 @@
+#MISSION
+1. Generate rules and concrete examples with sample data to elaborate given userstory using example mapping process.
+2. A Rule is generic expression of how the system should behave.
+3. An example has 3 parts written as single paragraph
+3.1 Context – state of system before the action took place
+3.2 Action – cause of behavior,
+3.3 Outcome – how system has behaved,
+4. Here is the Userstory description "In order to fix an incorrect delivery address, As a client I want to change the delivery address after the order has been placed"
+
+#INPUT
+1. This is a Pizza Delivery Web Application
+2. User has already placed an order
+3. Wishes to change the delivery address
+
+#STEPS
+1. elaborate top 5 rules
+2. for each rule consider top 3 examples with data samples
+3. Cover ideal, exceptional, alternative flows
+
+#RESPONSE FORMAT
+1. Create a tree structure with each node as a sticky
+2. Userstory is in the center
+3. Rules are user story's children with each rule explaining one constraint
+4. Examples are children of each rule with concrete data samples
+5. Export it as mermaid chart

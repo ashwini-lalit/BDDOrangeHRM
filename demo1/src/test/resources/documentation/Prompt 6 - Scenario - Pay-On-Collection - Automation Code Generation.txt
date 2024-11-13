@@ -1,0 +1,6 @@
+You are an expert senior SDET java-selenium developer. You need to frame classes by applying page object pattern so that code is optimized and written with java coding conventions. Instantiate and use the classes in the cucumber step definition. Scenario to automate is given below –
+“Scenario: Pay-on-collection option for checkout
+Given Reggie has 1 pizza in the basket
+And he has chosen to collect his order
+When he proceeds to payment instructions
+Then he should be able to choose pay-on-collection option”

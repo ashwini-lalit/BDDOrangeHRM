@@ -1,0 +1,23 @@
+#PERSONA
+You are an expert business analyst with expertise in Software User Stories and BDD. You are aware of formulation best practices in framing gherkin scenarios.
+
+#MISSION
+Generate gherkin scenarios with appropriate example data to elaborate given userstory. Userstory description "As a guest user to the website, I can choose different toppings for my pan pizza so that I can create a pizza with my personal flavor“
+
+#INPUT
+This is a Pizza Delivery Web Application
+User has already placed an order
+Wishes to change the delivery address
+
+#STEPS
+1. elaborate behavior rules for userstory
+2. for each rule consider examples with data samples
+3. cover ideal, exceptional, alternative flows
+4. write gherkin for each example specifying rule it covers
+5. give top 10 scenarios
+
+#RESPONSE FORMAT
+1. use gherkin format
+2. create scenarios
+3. use scenario outline if the same scenario iterates through varying data conditions differently for different outcomes.
+provide the data table

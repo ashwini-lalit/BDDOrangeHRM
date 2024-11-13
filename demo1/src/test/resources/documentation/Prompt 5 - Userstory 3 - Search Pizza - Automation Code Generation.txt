@@ -1,0 +1,6 @@
+Using best practices for page object pattern
+Define the PizzaCatalogue.java action class,
+PizzaCataloguePage.java that houses Dom level interactions using driver,
+PizzaCatalogue.properties that houses the recognition strings (assume required data),
+SearchPizzaSteps.java that houses the step definitions for the scenario given in the attached image.
+Put the scenario in the SearchPizza.feature file.

@@ -1,0 +1,3 @@
+Generate state of art gherkin scenarios with relevant data assumptions for this image input.
+use relevant data samples to denote the intended behavior constraint in the scenario. Mention data in single quotes.
+use data tables wherever necessary using scenario outline.
