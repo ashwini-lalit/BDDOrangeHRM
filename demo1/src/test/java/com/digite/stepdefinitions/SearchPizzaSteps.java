@@ -57,4 +57,9 @@ public class SearchPizzaSteps {
     public void she_should_be_able_to_find(String expectedResult) {
         Assert.assertEquals(expectedResult, searchResult);
     }
+
+    @Given("user has accessed the pizza store")
+    public void userHasAccessedThePizzaStore() {
+        pizzaCatalogue.navigateToMenuPage();
+    }
 }

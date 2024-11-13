@@ -39,6 +39,7 @@ public class PizzaCataloguePage {
         public void navigateToMenuPage() {
             WebElement menuLink = wait.until(ExpectedConditions.presenceOfElementLocated(
                     By.xpath(properties.getProperty("pizza_menu"))));
+            menuLink.click();
         }
 
     public String searchPizza(String searchType, String searchText) {
