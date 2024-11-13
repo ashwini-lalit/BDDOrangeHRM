@@ -41,34 +41,44 @@ public class PizzaCataloguePage {
                     By.xpath(properties.getProperty("pizza_menu"))));
         }
 
-        public String searchPizza(String searchType, String searchText) {
-            WebElement searchInput = wait.until(ExpectedConditions.presenceOfElementLocated(
-                    By.xpath(properties.getProperty("search_input"))));
-            searchInput.clear();
-            searchInput.sendKeys(searchText);
+    public String searchPizza(String searchType, String searchText) {
+        WebElement searchInput = wait.until(ExpectedConditions.presenceOfElementLocated(
+                By.xpath(properties.getProperty("search_input"))));
+        searchInput.clear();
+        searchInput.sendKeys(searchText);
 
-            List<WebElement> pizzaItems = driver.findElements(By.cssSelector(properties.getProperty("pizza_items")));
+        List<WebElement> pizzaItems = driver.findElements(By.cssSelector(properties.getProperty("pizza_items")));
 
-            for (WebElement pizza : pizzaItems) {
-                String pizzaInfo = "";
-                switch(searchType) {
-                    case "name":
-                        pizzaInfo = pizza.findElement(By.cssSelector(properties.getProperty("pizza_name"))).getText();
-                        break;
-                    case "size":
-                        pizzaInfo = pizza.findElement(By.cssSelector(properties.getProperty("pizza_size"))).getText();
-                        break;
-                    case "price":
-                        pizzaInfo = pizza.findElement(By.cssSelector(properties.getProperty("pizza_price"))).getText();
-                        break;
-                }
-
-                if (matchesSearchCriteria(searchType, searchText, pizzaInfo)) {
-                    return getPizzaName(pizza);
-                }
+        for (WebElement pizza : pizzaItems) {
+            String pizzaInfo = "";
+            switch(searchType) {
+                case "name":
+                    String pizzaNameXpath = properties.getProperty("pizza_name").replace("${dynamicValue}", searchText);
+                    if(pizza.findElement(By.xpath(pizzaNameXpath)).isDisplayed()){
+                        pizzaInfo = pizza.findElement(By.xpath(pizzaNameXpath)).getText();
+                    }
+                    break;
+                case "size":
+                    String pizzaSizeXpath = properties.getProperty("pizza_size").replace("${dynamicValue}", searchText);
+                    if(pizza.findElement(By.xpath(pizzaSizeXpath)).isDisplayed()){
+                        pizzaInfo = pizza.findElement(By.xpath(pizzaSizeXpath)).getText();
+                    }
+                    //pizzaInfo = pizza.findElement(By.cssSelector(properties.getProperty("pizza_size"))).getText();
+                    break;
+                case "price":
+                    String pizzaPriceXpath = properties.getProperty("pizza_price").replace("${dynamicValue}", searchText);
+                    if(pizza.findElement(By.xpath(pizzaPriceXpath)).isDisplayed()){
+                        pizzaInfo = pizza.findElement(By.xpath(pizzaPriceXpath)).getText();
+                    }
+                    break;
             }
-            return "Not Found";
+
+            if (matchesSearchCriteria(searchType, searchText, pizzaInfo)) {
+                return getPizzaName(pizza);
+            }
         }
+        return "Not Found";
+    }
 
         private boolean matchesSearchCriteria(String searchType, String searchText, String pizzaInfo) {
         switch(searchType) {
