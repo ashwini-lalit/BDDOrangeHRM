@@ -17,4 +17,5 @@ Create a tree structure with each node as a sticky
 Userstory is in the center
 Rules are user story's children explaining with each rule explaining one constraint
 Examples are children of each rule with concrete data samples
+Do not use characters like quote, double quote and pipe to indicate data. put example data in bold format
 Export it as mermaid chart

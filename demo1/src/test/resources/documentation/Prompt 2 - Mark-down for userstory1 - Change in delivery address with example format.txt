@@ -22,4 +22,5 @@
 2. Userstory is in the center
 3. Rules are user story's children with each rule explaining one constraint
 4. Examples are children of each rule with concrete data samples
-5. Export it as mermaid chart
+5. Do not use characters like quote, double quote and pipe to indicate data. put example data in bold format
+6. Export it as mermaid chart
