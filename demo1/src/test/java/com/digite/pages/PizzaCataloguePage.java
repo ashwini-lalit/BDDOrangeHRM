@@ -29,7 +29,7 @@ public class PizzaCataloguePage {
         private void loadProperties() {
             properties = new Properties();
             try {
-                FileInputStream file = new FileInputStream("src/test/resources/pageObjects/pizza_catalogue.properties");
+                FileInputStream file = new FileInputStream("src/test/resources/pageObjects/PizzaCatalogue.properties");
                 properties.load(file);
             } catch (IOException e) {
                 e.printStackTrace();
