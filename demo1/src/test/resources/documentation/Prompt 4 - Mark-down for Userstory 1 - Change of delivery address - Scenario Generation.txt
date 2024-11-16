@@ -6,8 +6,8 @@ Generate gherkin scenarios with appropriate example data to elaborate given user
 
 #INPUT
 This is a Pizza Delivery Web Application
-User has already placed an order
-Wishes to change the delivery address
+User has selected pan pizza
+Wishes to select toppings
 
 #STEPS
 1. elaborate behavior rules for userstory
